@@ -1,25 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {Provider} from "react-redux";
 import './App.scss';
+import store from "./redux/store";
+import {Header} from "./components/Header/Header";
+import LoadingSpinner from "./components/spinners/LoadingSpinner/LoadingSpinner";
 
-function App() {
+const FormPage = React.lazy(() => import("./components/FormPage/FormPage"));
+const PalettePage = React.lazy(() => import("./components/PalettePage/PalettePage"));
+
+
+function App(){
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  	<BrowserRouter>
+			<Provider store={store}>
+				<React.Suspense fallback={<LoadingSpinner />}>
+
+					<main className="App">
+						<Header />
+
+						<div className="content">
+								<Routes>
+									<Route path='/*' element={ <FormPage />} />
+									<Route path='/pallete' element={ <PalettePage />} />
+								</Routes>
+						</div>
+
+					</main>
+
+				</React.Suspense>
+			</Provider>
+		</BrowserRouter>
   );
 }
 

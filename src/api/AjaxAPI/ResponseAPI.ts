@@ -1,19 +1,17 @@
-import axios from "axios";
-// import * as axios from "axios";
+import {AjaxAPI} from "./AjaxAPI";
+import { ContactType } from "../../types/types";
 
-// const BASE_URL = "https://test-job.pixli.app/";
-//
-// export const instance = axios.create({
-// 	withCredentials: true,
-// 	baseURL: BASE_URL,
-// });
 
-export class AjaxAPI {
-	static instance = axios.create({
-		withCredentials: true,
-		baseURL: "https://test-job.pixli.app/",
-		// headers: {
-		// 	'Content-Type': 'application/json'
-		// }
-	});
+
+export class ResponseAPI extends AjaxAPI {
+	static getResponse(action:string, id:number, image:File, contact:ContactType){
+		const body = {
+			action: action, // 'POST',
+			id: id, // 1,
+			image: image, // '',
+			contact: contact, // ['name', 'surname', 'patronymic'],
+		};
+
+		return this.instance.post(`/send.php`, body).then(response => response);;
+	}
 }

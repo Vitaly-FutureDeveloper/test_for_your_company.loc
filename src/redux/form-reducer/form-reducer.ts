@@ -1,4 +1,6 @@
 import {BaseThunkType, InferActionsTypes} from "../store";
+import {ResponseAPI} from "../../api/AjaxAPI/ResponseAPI";
+import {ContactType} from "../../types/types";
 
 const initialState = {
 	response: '',
@@ -31,11 +33,11 @@ export const actions = {
 	} as const),
 };
 
-export const getResponseTextThunk = (action:string, id:number, image:any, contact:any):ThunkType => {
+export const getResponseTextThunk = (action:string, id:number, image:File, contact:ContactType):ThunkType => {
 	return async (dispatch) => {
-		// const response = await FormAPI.getResponse(action:string, id:number, image:any, contact:any);
-		//
-		// dispatch( actions.setResponseForm(response) );
+		const response:any = await ResponseAPI.getResponse(action, id, image, contact);
+
+		dispatch( actions.setResponseForm(response) );
 	}
 }
 
