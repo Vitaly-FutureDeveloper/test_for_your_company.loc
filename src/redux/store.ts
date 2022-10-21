@@ -1,9 +1,12 @@
-import { applyMiddleware, combineReducers, createStore } from "redux";
-import thunkMiddleware from "redux-thunk";
+import {Action, applyMiddleware, combineReducers, createStore} from "redux";
+import thunkMiddleware, {ThunkAction} from "redux-thunk";
 
+import paletteReducer from "./palette-reducer/palette-reducer";
+import formReducer from "./form-reducer/form-reducer";
 
 const reducers = combineReducers({
-    
+	palettePage: paletteReducer,
+	formPage: formReducer
 });
 
 type RootReducerType = typeof reducers;
