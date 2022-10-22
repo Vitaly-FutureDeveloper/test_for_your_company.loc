@@ -1,6 +1,19 @@
-.navList{
+@import "src/styles/mixins/no-list-style";
 
+.header{
+	margin-bottom: 30px;
+}
+.navList{
+	@include no-list-style;
+	display: flex;
+	justify-content: flex-start;
 }
 .navList__item{
+	&:not(:last-child){
+		margin-right: 40px;
+	}
+}
 
+.navList_active{
+	text-decoration-line: underline;
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import {Provider} from "react-redux";
 import './App.scss';
 import store from "./redux/store";
@@ -14,19 +14,27 @@ function App(){
   return (
   	<BrowserRouter>
 			<Provider store={store}>
+
 				<React.Suspense fallback={<LoadingSpinner />}>
 
-					<main className="App">
-						<Header />
+					<div className="App">
+						<div className="App-wrapper">
+							<Header />
 
-						<div className="content">
-								<Routes>
-									<Route path='/*' element={ <FormPage />} />
-									<Route path='/pallete' element={ <PalettePage />} />
-								</Routes>
+							<main className="page-main">
+								<aside className="sidebar">
+									<Routes>
+										<Route path='/form' element={ <FormPage /> } />
+										<Route path='/palette' element={ <PalettePage /> } />
+										<Route path="/" element={<Navigate replace to="/form" />} />
+									</Routes>
+								</aside>
+								<div className="content">
+
+								</div>
+							</main>
 						</div>
-
-					</main>
+					</div>
 
 				</React.Suspense>
 			</Provider>

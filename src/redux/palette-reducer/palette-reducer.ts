@@ -1,9 +1,11 @@
 import {InferActionsTypes} from "../store";
 import {ColorType} from "../../types/types";
+import {getUnicID} from "../../api/utils/getUnicID";
 
 
 
 const initialState = {
+	showModal: null as number | null,
 	colors: [] as Array<ColorType>
 };
 
@@ -14,14 +16,34 @@ const paletteReducer = (state=initialState, action:ActionsTypes): InitialStateTy
 
 	switch (action.type){
 
-		case "SN/palette/ADD_COLOR_PICKER_PALLETE":{
+		case "SN/palette/SHOW_MODAL_COLOR_PICKER_PALLETE": {
 			return {
 				...state,
-				colors: [...state.colors, action.color]
+				showModal: action.modal
 			};
 		}
 
-		case "SN/palette/DELETE_COLOR_PICKER_PALLETE":{
+		case "SN/palette/ADD_COLOR_PICKER_PALLETE": {
+			return {
+				...state,
+				colors: [...state.colors, { id: getUnicID(), colorValue: '#ffffff' }] as Array<ColorType>
+			};
+		}
+
+		case "SN/palette/SET_COLOR_PICKER_PALLETE": {
+			// const body = {
+			// 	...state,
+			// 	// colors: [...state.colors]
+			// 	colors: state.colors.map((item) => item)
+			// };
+			const body = JSON.parse( JSON.stringify(state) );
+			const index = body.colors.findIndex((item:ColorType) => item.id === action.id);
+			body.colors[index].colorValue = action.colorValue;
+
+			return body;
+		}
+
+		case "SN/palette/DELETE_COLOR_PICKER_PALLETE": {
 			return {
 				...state,
 				colors: [...state.colors.filter((item) => item.id !== action.id)]
@@ -34,14 +56,24 @@ const paletteReducer = (state=initialState, action:ActionsTypes): InitialStateTy
 };
 
 export const actions = {
-	addColorPickerPallete : (color:ColorType) => ({
+	setShowModalColorPicker : (modal: number | null) => ({
+		type: "SN/palette/SHOW_MODAL_COLOR_PICKER_PALLETE",
+		modal
+	} as const),
+
+	addColorPickerPallete : () => ({
 		type: "SN/palette/ADD_COLOR_PICKER_PALLETE",
-		color
 	} as const),
 
 	deleteColorPickerPallete : (id:number) => ({
 		type: "SN/palette/DELETE_COLOR_PICKER_PALLETE",
 		id
+	} as const),
+
+	setColorPickerPallete : (id:number | null, colorValue:string) => ({
+		type: "SN/palette/SET_COLOR_PICKER_PALLETE",
+		id,
+		colorValue,
 	} as const),
 };
 

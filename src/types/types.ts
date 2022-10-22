@@ -1,6 +1,6 @@
 export type ColorType = {
 	id: number,
-	color: string,
+	colorValue: string,
 }
 
 export type ContactType = {

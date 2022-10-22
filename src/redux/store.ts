@@ -21,4 +21,6 @@ export type BaseThunkType<A extends Action, R=Promise<void>> = ThunkAction<R, Ap
 // @ts-ignore
 const store = createStore(reducers, applyMiddleware(thunkMiddleware));
 
+// @ts-ignore
+window.store = store;
 export default store;
