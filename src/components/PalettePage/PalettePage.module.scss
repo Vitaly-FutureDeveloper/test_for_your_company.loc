@@ -18,14 +18,76 @@
 	height: 50px;
 }
 
+.btnColorBlock{
+	position: relative;
+
+	margin-bottom: 5px;
+
+	visibility: visible;
+
+	padding-top: 12px;
+	padding-right: 25px;
+
+	&:not(:nth-child(4n)){
+		//margin-right: 25px;
+	}
+}
+
 .btnPicker{
 	width: 54px;
 	height: 54px;
+	border: 0;
 	border-radius: 5px;
-	margin-bottom: 20px;
 
-	&:not(:nth-child(4n)){
-		margin-right: 25px;
+	cursor: pointer;
+	z-index: 1;
+}
+
+.btnDelete{
+	position: absolute;
+	right: 19px;
+	top: 2px;
+
+	width: 17px;
+	height: 17px;
+	border: 2px solid #FFFFFF;
+	border-radius: 50%;
+	background-color: transparent;
+
+	z-index: 100;
+
+	cursor: pointer;
+
+	&::before,
+	&::after{
+		transition: 0.4s;
+
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		border-radius: 40%;
+
+		width: 12px;
+		height: 2px;
+
+		background-color: #FFFFFF;
+	}
+
+	&::before{
+		transform: translate(-50%, -50%) rotate(45deg);
+	}
+	&::after{
+		transform: translate(-50%, -50%) rotate(-45deg);
+	}
+
+	&:hover::before{
+		transform: translate(-50%, -50%) rotate(-45deg);
+	}
+	&:hover::after{
+		transform: translate(-50%, -50%) rotate(45deg);
 	}
 }
 

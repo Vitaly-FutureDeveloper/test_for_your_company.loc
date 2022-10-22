@@ -33,8 +33,7 @@ const paletteReducer = (state=initialState, action:ActionsTypes): InitialStateTy
 		case "SN/palette/SET_COLOR_PICKER_PALLETE": {
 			// const body = {
 			// 	...state,
-			// 	// colors: [...state.colors]
-			// 	colors: state.colors.map((item) => item)
+			// 	colors: [...state.colors]
 			// };
 			const body = JSON.parse( JSON.stringify(state) );
 			const index = body.colors.findIndex((item:ColorType) => item.id === action.id);
