@@ -22,23 +22,9 @@ export const PalettePage:React.FC = () => {
 		dispatch( actions.setShowModalColorPicker(id) );
 	};
 
-	// useEffect(() => {
-	// 	document.addEventListener('click', showModalChangeColor.bind(this, null) );
-	//
-	// 	return () => document.removeEventListener('click', showModalChangeColor.bind(this, null) );
-	// }, []);
-
 	return <section>
 		<ColorPickerModal showModalChangeColor={showModalChangeColor} colorPicsBlockRef={colorPicsBlockRef} />
 		<div className={styles.colorPicsBlock} ref={colorPicsBlockRef}>
-			{/*{*/}
-			{/*	colors ?*/}
-			{/*		colors.map((color) => <ColorPickerModal key={color.id} id={color.id} />)*/}
-
-			{/*		:*/}
-
-			{/*		<LoadingSpinner />*/}
-			{/*}*/}
 
 			{
 				colors ?

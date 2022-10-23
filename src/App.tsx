@@ -22,6 +22,7 @@ function App(){
 							<Header />
 
 							<main className="page-main">
+								<h1 className="visually-hidden">Тестовое задание для компании RuYou</h1>
 								<aside className="sidebar">
 									<Routes>
 										<Route path='/form' element={ <FormPage /> } />
@@ -30,7 +31,7 @@ function App(){
 									</Routes>
 								</aside>
 								<div className="content">
-
+								{/* Тут будет основной контент приложения */}
 								</div>
 							</main>
 						</div>

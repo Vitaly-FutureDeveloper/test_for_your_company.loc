@@ -1,0 +1,95 @@
+.mainForm__label{
+	position: relative;
+	display: flex;
+	flex-direction: column;
+
+	font-family: 'Gotham Pro', sans-serif;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 13px;
+	line-height: 22px;
+
+	letter-spacing: -0.408px;
+
+	color: rgba(235, 235, 245, 0.6);
+
+	margin-bottom: 18px;
+}
+.mainForm__labelName{
+	margin-left: 10px;
+}
+
+.mainForm__textInput{
+	font-family: 'Gotham Pro', sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 17px;
+	line-height: 22px;
+
+	letter-spacing: -0.408px;
+	color: rgba(235, 235, 245, 0.6);
+
+	height: 36px;
+
+	padding: 7px 12px;
+
+
+	border: 0;
+	background-color: rgba(118, 118, 128, 0.24);
+	border-radius: 10px;
+}
+.mainForm__fileInput{
+	display: none;
+}
+
+.mainForm__inputFileBlock{
+	width: 125px;
+	height: 85px;
+	background-color: rgba(118, 118, 128, 0.24);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 50%;
+
+	border-radius: 10px;
+
+	cursor: pointer;
+}
+.formValidateText{
+	position: absolute;
+	bottom: -18px;
+	color: #ee1f48;
+}
+
+.formBtnsSubmit{
+	margin-top: 48px;
+}
+
+.formBtnsSubmit__btnSubmit{
+	height: 50px;
+	&:disabled{
+		background-color: #a7a7a7;
+	}
+}
+
+.response{
+	margin-top: 20px;
+}
+.response__title{
+	font-weight: 700;
+	font-size: 13px;
+	line-height: 22px;
+
+	letter-spacing: -0.408px;
+
+	color: rgba(235, 235, 245, 0.6);
+
+	margin-left: 10px;
+}
+.response__text{
+	margin: 0;
+	padding: 10px;
+	width: 350px;
+	min-height: 120px;
+	background-color: rgba(118, 118, 128, 0.24);
+	border-radius: 10px;
+}

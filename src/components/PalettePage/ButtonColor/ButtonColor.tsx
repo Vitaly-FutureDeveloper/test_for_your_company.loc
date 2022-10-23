@@ -1,10 +1,9 @@
-import React, {useEffect, useRef, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import React, {useState} from "react";
+import {useSelector} from "react-redux";
 import styles from "../PalettePage.module.scss";
 import {getOneColor} from "../../../redux/palette-reducer/palette-selectors";
 import {AppStateType} from "../../../redux/store";
 import {ButtonDelete} from "./ButtonDelete/ButtonDelete";
-
 
 
 type PropsType = {
