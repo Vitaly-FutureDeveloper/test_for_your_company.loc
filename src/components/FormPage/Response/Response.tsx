@@ -1,5 +1,6 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {useSelector} from "react-redux";
+
 import {getResponse} from "../../../redux/form-reducer/form-selectors";
 import styles from "./../FormPage.module.scss";
 

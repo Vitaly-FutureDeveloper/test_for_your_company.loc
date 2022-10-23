@@ -57,7 +57,7 @@ export const actions = {
 			type: "SN/palette/SHOW_MODAL_COLOR_PICKER_PALLETE",
 			modal
 		}) as const,
-	
+
 	addColorPickerPallete : (picker:ColorType) => ({
 		type: "SN/palette/ADD_COLOR_PICKER_PALLETE",
 		picker,

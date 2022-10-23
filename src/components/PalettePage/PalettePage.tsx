@@ -1,11 +1,12 @@
 import React, {useRef} from "react";
-import styles from "./PalettePage.module.scss";
 import {useDispatch, useSelector} from "react-redux";
+import styles from "./PalettePage.module.scss";
+
 import {getColors} from "../../redux/palette-reducer/palette-selectors";
-import LoadingSpinner from "../spinners/LoadingSpinner/LoadingSpinner";
 import {actions, addColorPickerPalleteThunk} from "../../redux/palette-reducer/palette-reducer";
 import {ButtonColor} from "./ButtonColor/ButtonColor";
 import {ColorPickerModal} from "./ColorPickerModal/ColorPickerModal";
+import LoadingSpinner from "../spinners/LoadingSpinner/LoadingSpinner";
 
 export const PalettePage:React.FC = () => {
 	const dispatch = useDispatch();

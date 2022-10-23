@@ -1,6 +1,5 @@
 import React, {useEffect, useRef} from "react";
-import {SketchPicker} from 'react-color';
-import { HexColorPicker } from "react-colorful";
+import {HexColorPicker} from "react-colorful";
 
 import {useDispatch, useSelector} from "react-redux";
 import {getOneColor, getShowModal} from "../../../redux/palette-reducer/palette-selectors";
@@ -9,7 +8,6 @@ import styles from "./../PalettePage.module.scss";
 import {AppStateType} from "../../../redux/store";
 
 type PropsType = {
-	//id:number,
 	showModalChangeColor: (id: number | null) => void,
 	colorPicsBlockRef: any
 };
@@ -37,16 +35,10 @@ export const ColorPickerModal:React.FC<PropsType> = ({showModalChangeColor, colo
 	}, [showModal]);
 
 	const setColor = (evt:any) => {
-		// dispatch( actions.setColorPickerPallete(showModal, evt.hex) );
 		dispatch( actions.setColorPickerPallete(showModal, evt) );
 	};
 
 	return !showModal ? null : <div className={styles.modalPicker} ref={rootEl}>
-
-		{/*<SketchPicker color={ color }*/}
-		{/*							onChange={setColor}*/}
-		{/*						 	onChangeComplete={ setColor } />*/}
-
 		<HexColorPicker color={color} onChange={setColor} />;
 	</div>
 };

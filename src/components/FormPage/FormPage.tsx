@@ -1,9 +1,10 @@
 import React from "react";
-import MainForm from "./MainForm/MainForm";
-import {FormType} from "../../types/types";
 import {useDispatch} from "react-redux";
+
+import {FormType} from "../../types/types";
 import {Response} from "./Response/Response";
 import {getResponseTextThunk} from "../../redux/form-reducer/form-reducer";
+import MainForm from "./MainForm/MainForm";
 
 export const FormPage:React.FC = () => {
 

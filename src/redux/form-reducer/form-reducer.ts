@@ -10,6 +10,7 @@ export type InitialStateType = typeof initialState;
 type ActionsTypes = InferActionsTypes<typeof actions>;
 type ThunkType = BaseThunkType<ActionsTypes>;
 
+
 const formReducer = (state=initialState, action:ActionsTypes): InitialStateType => {
 
 	switch (action.type){
@@ -24,6 +25,7 @@ const formReducer = (state=initialState, action:ActionsTypes): InitialStateType 
 			return state;
 	}
 };
+
 
 export const actions = {
 	setResponseForm : (responseText:string) => ({
@@ -49,7 +51,7 @@ export const getResponseTextThunk = (action:string, id:number, image:File, name:
 		// };
 		try{
 			// const response:any = await ResponseAPI.getResponse(action, id, image, contact);
-			const response:any = await ResponseAPI.getResponse(contact);
+			const response = await ResponseAPI.getResponse(contact);
 
 			dispatch( actions.setResponseForm(response.msg) );
 		} catch (error) {

@@ -1,8 +1,7 @@
-import React, {useEffect, useRef} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import React from "react";
+import {useDispatch} from "react-redux";
 import styles from "../../PalettePage.module.scss";
 import {actions} from "../../../../redux/palette-reducer/palette-reducer";
-
 
 
 type PropsType = {
