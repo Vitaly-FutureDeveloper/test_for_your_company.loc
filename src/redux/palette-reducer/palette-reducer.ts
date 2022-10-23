@@ -1,7 +1,6 @@
-import {InferActionsTypes} from "../store";
+import {BaseThunkType, InferActionsTypes} from "../store";
 import {ColorType} from "../../types/types";
 import {getUnicID} from "../../api/utils/getUnicID";
-
 
 
 const initialState = {
@@ -9,8 +8,11 @@ const initialState = {
 	colors: [] as Array<ColorType>
 };
 
+
 export type InitialStateType = typeof initialState;
 type ActionsTypes = InferActionsTypes<typeof actions>;
+
+type ThunkType = BaseThunkType<ActionsTypes>;
 
 const paletteReducer = (state=initialState, action:ActionsTypes): InitialStateType => {
 
@@ -26,15 +28,11 @@ const paletteReducer = (state=initialState, action:ActionsTypes): InitialStateTy
 		case "SN/palette/ADD_COLOR_PICKER_PALLETE": {
 			return {
 				...state,
-				colors: [...state.colors, { id: getUnicID(), colorValue: '#ffffff' }] as Array<ColorType>
+				colors: [...state.colors, action.picker]
 			};
 		}
 
 		case "SN/palette/SET_COLOR_PICKER_PALLETE": {
-			// const body = {
-			// 	...state,
-			// 	colors: [...state.colors]
-			// };
 			const body = JSON.parse( JSON.stringify(state) );
 			const index = body.colors.findIndex((item:ColorType) => item.id === action.id);
 			body.colors[index].colorValue = action.colorValue;
@@ -56,12 +54,13 @@ const paletteReducer = (state=initialState, action:ActionsTypes): InitialStateTy
 
 export const actions = {
 	setShowModalColorPicker : (modal: number | null) => ({
-		type: "SN/palette/SHOW_MODAL_COLOR_PICKER_PALLETE",
-		modal
-	} as const),
-
-	addColorPickerPallete : () => ({
+			type: "SN/palette/SHOW_MODAL_COLOR_PICKER_PALLETE",
+			modal
+		}) as const,
+	
+	addColorPickerPallete : (picker:ColorType) => ({
 		type: "SN/palette/ADD_COLOR_PICKER_PALLETE",
+		picker,
 	} as const),
 
 	deleteColorPickerPallete : (id:number) => ({
@@ -74,6 +73,16 @@ export const actions = {
 		id,
 		colorValue,
 	} as const),
+};
+
+export const addColorPickerPalleteThunk = ():ThunkType => {
+	return async (dispatch) => {
+		const unicId = getUnicID();
+		const picker = { id: unicId, colorValue: '#ffffff' };
+
+		dispatch( actions.addColorPickerPallete(picker) );
+		dispatch( actions.setShowModalColorPicker(unicId) );
+	}
 };
 
 export default paletteReducer;

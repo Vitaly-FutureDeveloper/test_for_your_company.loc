@@ -35,18 +35,29 @@ export const actions = {
 export const getResponseTextThunk = (action:string, id:number, image:File, name:string, surname:string, patronymic:string):ThunkType => {
 	return async (dispatch) => {
 		const contact = new FormData();
+		contact.set('action', 'send_data');
+		// @ts-ignore
+		contact.set('id', id);
 		contact.set('contact[name]', name);
 		contact.set('contact[surname]', surname);
 		contact.set('contact[patronymic]', patronymic);
+		contact.set('image', image);
+		// const contact = {
+		// 	name,
+		// 	surname,
+		// 	patronymic
+		// };
 		try{
-			const response:any = await ResponseAPI.getResponse(action, id, image, contact);
-			dispatch( actions.setResponseForm(response) );
+			// const response:any = await ResponseAPI.getResponse(action, id, image, contact);
+			const response:any = await ResponseAPI.getResponse(contact);
+
+			dispatch( actions.setResponseForm(response.msg) );
 		} catch (error) {
 			dispatch( actions.setResponseForm('Произошла ошибка отправки формы') );
 			throw error;
 		}
 
 	}
-}
+};
 
 export default formReducer;

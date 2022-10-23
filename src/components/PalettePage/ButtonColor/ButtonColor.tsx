@@ -21,9 +21,12 @@ export const ButtonColor:React.FC<PropsType> = ({id, showModalChangeColor}) => {
 	return <div className={styles.btnColorBlock}
 							onMouseOver={ () => setShowDelete(true) }
 							onMouseOut={ () => setShowDelete(false) } >
+
 		{ showDelete && <ButtonDelete id={id}/> }
+
 		<button style={{backgroundColor: color}}
 						onClick={ () => showModalChangeColor(id) }
 						className={styles.btnPicker}></button>
+
 	</div>
 }

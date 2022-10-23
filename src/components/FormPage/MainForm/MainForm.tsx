@@ -32,15 +32,6 @@ const MainForm:React.FC<PropsType> = ({onFormSubmit}) => {
 			.min(2, 'Отчество  не менее 2 символа')
 			.max(20, 'Отчество не может быть больше 20 символов')
 			.required('Поле отчество обязательно для заполнения'),
-
-		// image: Yup.array().of(Yup.object().shape({
-		// 	file: Yup.mixed().test('fileSize', 'Размер файла больше 10 байт', (value) => {
-		// 		if (!value) return false
-		// 		return value.size < 10
-		// 	}).required(),
-		// 	type: Yup.string().oneOf([`application/vnd.ms-publisher`], 'Добавьте файл с правильным форматов').required(),
-		// 	name: Yup.string().required()
-		// }).typeError('Добавьте файл')).required()
 	});
 
 	const [photoForm, setPhotoForm] = useState(photoToForm);
@@ -120,8 +111,8 @@ const MainForm:React.FC<PropsType> = ({onFormSubmit}) => {
 					<div className={styles.formBtnsSubmit}>
 						<button type="submit"
 										disabled={isSubmitting}
-										className={`btn ${styles.formBtnsSubmit__btnSubmit}`}
-						>Сохранить
+										className={`btn ${styles.formBtnsSubmit__btnSubmit}`} >
+							Сохранить
 						</button>
 					</div>
 				</Form>

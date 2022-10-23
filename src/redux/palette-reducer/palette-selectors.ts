@@ -1,6 +1,5 @@
-import { createSelector } from 'reselect';
+import {createSelector} from 'reselect';
 import {AppStateType} from "../store";
-import {ColorType} from "../../types/types";
 
 const getShowModalSelector = (state:AppStateType) => state.palettePage.showModal;
 export const getShowModal = createSelector(getShowModalSelector, (showModal) => showModal);

@@ -9,10 +9,8 @@ export const FormPage:React.FC = () => {
 
 	const dispatch = useDispatch();
 
-	// const onFormSubmit = (action:string, id:number, image:File, name:string, surname:string, patronymic:string) => {
 	const onFormSubmit = (formValues:FormType) => {
 		const {action, id, image, name, surname, patronymic} = formValues;
-		console.log(action, id, image, name, surname, patronymic);
 		// @ts-ignore
 		dispatch( getResponseTextThunk(action, id, image, name, surname, patronymic) );
 	};

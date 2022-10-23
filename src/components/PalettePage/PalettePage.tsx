@@ -1,9 +1,9 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useRef} from "react";
 import styles from "./PalettePage.module.scss";
 import {useDispatch, useSelector} from "react-redux";
 import {getColors} from "../../redux/palette-reducer/palette-selectors";
 import LoadingSpinner from "../spinners/LoadingSpinner/LoadingSpinner";
-import {actions} from "../../redux/palette-reducer/palette-reducer";
+import {actions, addColorPickerPalleteThunk} from "../../redux/palette-reducer/palette-reducer";
 import {ButtonColor} from "./ButtonColor/ButtonColor";
 import {ColorPickerModal} from "./ColorPickerModal/ColorPickerModal";
 
@@ -15,16 +15,17 @@ export const PalettePage:React.FC = () => {
 
 
 	const addColorPicker = () => {
-		dispatch( actions.addColorPickerPallete() );
+		// @ts-ignore
+		dispatch( addColorPickerPalleteThunk() );
 	};
 
 	const showModalChangeColor = (id:number|null) => {
 		dispatch( actions.setShowModalColorPicker(id) );
 	};
 
-	return <section>
+	return <section ref={colorPicsBlockRef}>
 		<ColorPickerModal showModalChangeColor={showModalChangeColor} colorPicsBlockRef={colorPicsBlockRef} />
-		<div className={styles.colorPicsBlock} ref={colorPicsBlockRef}>
+		<div className={styles.colorPicsBlock} >
 
 			{
 				colors ?

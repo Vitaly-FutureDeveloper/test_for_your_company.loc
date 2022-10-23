@@ -1,6 +1,7 @@
 import React from 'react';
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import {Provider} from "react-redux";
+
 import './App.scss';
 import store from "./redux/store";
 import {Header} from "./components/Header/Header";
