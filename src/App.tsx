@@ -23,7 +23,7 @@ function App(){
 							<Header />
 
 							<main className="page-main">
-								<h1 className="visually-hidden">Тестовое задание для компании RuYou</h1>
+								<h1 className="visually-hidden">Тестовое задание</h1>
 								<aside className="sidebar">
 									<Routes>
 										<Route path='/form' element={ <FormPage /> } />
